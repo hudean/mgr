@@ -33,6 +33,7 @@
       :columns="columns" 
       :data-source="list"
       :pagination="false"
+      bordered
       >
         <template #creationTime="data">
           {{ formatTimestamp(data.record.creationTime) }}          

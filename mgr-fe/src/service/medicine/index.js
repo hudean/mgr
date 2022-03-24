@@ -41,3 +41,9 @@ export const updateCount = (data = {} ) => {
         data,
     );
 };
+
+export const detail = (id) => {
+    return axios.get(
+        `http://localhost:3000/medicine/detail/${id}`,
+    )
+}

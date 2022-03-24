@@ -6,6 +6,7 @@ const article = require('./article');
 const feedback = require('./feedback');
 const consult = require('./consult');
 const medicine = require('./medicine');
+const inventoryLog = require('./inventory-log');
 
 module.exports = (app) =>{
     app.use(auth.routes());
@@ -16,4 +17,5 @@ module.exports = (app) =>{
     app.use(feedback.routes());
     app.use(consult.routes());
     app.use(medicine.routes());
+    app.use(inventoryLog.routes());
 };

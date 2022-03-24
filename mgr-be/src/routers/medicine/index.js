@@ -5,11 +5,21 @@ const { v4:uuidv4 } = require('uuid');
 const config = require('../../project.config');
 const { loadExcel,getFirstSheet } = require('../../helpers/excel');
 const excel = require('../../helpers/excel');
-const Medicine = mongoose.model('Medicine');
 
 const MEDICINE_CONST = {
-    IN:1,
-    OUT:2,
+    IN:'IN_COUNT',
+    OUT:'OUT_COUNT',
+};
+
+const Medicine = mongoose.model('Medicine');
+const InventoryLog = mongoose.model('InventoryLog');
+
+const findMedicineOne = async (id) => {
+    const one = await Medicine.findOne({
+        _id:id,
+    }).exec();
+
+    return one;
 };
 
 const router = new Router({
@@ -157,7 +167,6 @@ router.post('/addMany',async(ctx)=> {
     const excel = loadExcel(path);
 
     const sheet = getFirstSheet(excel);
-    console.log(sheet)
     const arr = [];
     for(let i = 0;i<sheet.length;i++){
         let record = sheet[i];
@@ -239,12 +248,44 @@ router.post('/update/count',async (ctx) => {
     }
     const res = await medicine.save();
 
+    const log = new InventoryLog({
+        num:Math.abs(num),
+        type,
+    });
+
+    log.save();
+
+
     ctx.body = {
         data:res,
         code:1,
         msg:'操作成功',
     }
 
+});
+
+//药物详细信息，查询接口
+router.get('/detail/:id',async (ctx) => {
+    const {
+        id,
+    } = ctx.params;
+
+    const one = await findMedicineOne(id);
+
+    // 没有找到医生的信息
+    if(!one){
+        ctx.body = {
+            msg:'没有找到医生的信息',
+            code:0,
+        }
+        return;
+    }
+
+    ctx.body = {
+        msg:'查询成功',
+        data:one,
+        code:1,
+    }
 });
 
 module.exports = router;

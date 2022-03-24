@@ -1,5 +1,6 @@
 import { defineComponent,ref,onMounted } from 'vue';
 import { medicine } from '@/service';
+import { useRouter } from 'vue-router';
 import { message,Modal,Input  } from 'ant-design-vue';
 import { BookFilled, UploadOutlined } from '@ant-design/icons-vue';
 import { result,formatTimestamp } from '@/helpers/utils';
@@ -7,12 +8,19 @@ import AddOne from './AddOne/index.vue';
 import Update from './Update/index.vue';
 import { Item } from 'ant-design-vue/lib/menu';
 
+const MEDICINE_CONST = {
+    IN:'IN_COUNT',
+    OUT:'OUT_COUNT',
+};
+
 export default defineComponent({
     components:{
         AddOne,
         Update,
     },
     setup() {
+        const router = useRouter();
+
         const columns = [
             {
                 title: '价格',
@@ -115,7 +123,7 @@ export default defineComponent({
         };
 
 
-        // 删除一个医生的信息
+        // 删除一个药品的信息
         const remove = async ({ text:record }) => {
            const { _id } = record; 
              
@@ -127,12 +135,12 @@ export default defineComponent({
                 getList();
             });
         };
-
+        // 显示更新弹框
         const update = ({ record }) => {
             showUpdateModal.value = true;
             curEditMedicine.value = record;
         };
-
+        // 更新列表的某一行数据
         const updateCurMedicine = () => {
             Object.assign(curEditMedicine.value,newData);
         };
@@ -168,19 +176,39 @@ export default defineComponent({
             ),
             onOk:async() => {
                 const el = document.querySelector('.__medicine_input_count');
+                let num = el.value;
 
                 const res = await medicine.updateCount({
                     id:record._id,
-                    num:el.value,
+                    num,
                     type,
                 });
 
                 result(res)
                     .success((data) => {
-                        console.log(data);
+                        if(type === MEDICINE_CONST.IN){
+                            // 入库操作
+                            num = Math.abs(num);
+                        }else{
+                            // 出库操作
+                            num = -Math.abs(num);
+                        }
+                        const one = list.value.find((item) => {
+                            return item._id === record._id;
+                        });
+                        if(one){
+                            one.count = one.count + num;
+
+                            message.success(`成功${word} ${Math.abs(num)} 本书`);
+                        }
                     })
             },
         })
+    };
+
+    // 进入药物详情页
+    const toDetail = ({record}) => {
+        router.push(`/medicine/${record._id}`);
     };
         return {
             columns,
@@ -201,6 +229,7 @@ export default defineComponent({
             updateCurMedicine,
             onUploadChange,
             updateCount,
+            toDetail,
         };
     },
 });

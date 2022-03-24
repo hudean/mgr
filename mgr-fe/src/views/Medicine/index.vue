@@ -33,6 +33,7 @@
       :columns="columns" 
       :data-source="list"
       :pagination="false"
+      bordered
       >
         <template #creationTime="data">
           {{ formatTimestamp(data.record.creationTime) }}          
@@ -43,6 +44,8 @@
           <a href="javascript:;"  @click="updateCount('OUT_COUNT',data.record)">出库</a>        
         </template>
         <template #actions="record">
+          <a class="detail" href="javascript:;" @click="toDetail(record)">详情</a>
+          &emsp;
           <a class="edit" href="javascript:;" @click="update(record)">编辑</a>
           &emsp;
           <a class="del" href="javascript:;" @click="remove(record)">删除</a>          
