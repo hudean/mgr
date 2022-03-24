@@ -22,3 +22,5 @@ connect().then(() => {
     });
 });
 
+console.log('123');
+
