@@ -1,0 +1,37 @@
+.search{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    a{
+        width: 40px;
+        margin-left: 16px;
+    }
+}
+.ant-btn-primary{
+    background-color: rgb(120, 118, 118) !important;
+    border-color:  rgb(120, 118, 118);
+}
+.operation{
+    display: flex;
+    justify-content: space-between;
+}
+.upload{
+    display: flex;
+
+}
+.ant-upload{
+    margin: 0 10px !important;
+}
+::v-deep .ant-table-thead > tr > th {
+    font-weight: bolder !important;
+    background-color:#f2f2f2  !important;   //如果不生效 记得加后面的这个important
+}
+::v-deep .ant-card-body{
+    border: 1px solid #e6e6e6;
+}
+::v-deep .ant-table-body{
+    border: 0.1px solid #e6e6e6;
+}
+::v-deep td{
+    font-size: 15px;
+}
