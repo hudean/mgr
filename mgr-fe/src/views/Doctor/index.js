@@ -58,7 +58,6 @@ export default defineComponent({
             
         ];
 
-
         const show = ref(false);
         const showUpdateModal = ref(false);
         const list = ref([]);
@@ -69,21 +68,24 @@ export default defineComponent({
         const curEditDoctor = ref({});
 
         // 获取书籍列表
-        const getList = async () => {
-            const res = await doctor.list({
-                page:curPage.value,
-                size:10,
-                keyword:keyword.value,
-            });
-            
-           result(res)
-            .success(({ data }) => {
-                const { list:l,total:t } = data;
-                list.value = l;
-                total.value = t;
-            });
-        }
+        //------
+            // 获取文章列表
+    const getList = async () => {
+        const res = await doctor.list({
+          page: curPage.value,
+          size: 10,
+          keyword: keyword.value,
+        });
+  
+        result(res)
+          .success(({ data }) => {
+            const { list: l, total: t } = data;
+            list.value = l;
+            total.value = t;
+          });
+      };
 
+        //------
         onMounted(async () => {
             getList();
         });
@@ -135,39 +137,6 @@ export default defineComponent({
         const updateCurDoctor = () => {
             Object.assign(curEditDoctor.value,newData);
         };
-
-        // const onUploadChange = ({ file }) => {
-        //     if(file.response){
-        //         result(file.response)
-        //             .success(async (key) => {
-        //                 const res = await doctor.addMany(key);
-
-        //                 result(res)
-        //                     .success(({ data: { addCount }}) => {
-        //                         message.success(`成功添加 ${addCount} 名医生`);
-
-        //                         getList();
-        //                     })
-        //             })
-        //     }
-            
-        // };
-        // const onUploadChange = ({ file }) => {
-        //     if(file.response){
-        //         console.log('111')
-        //         result(file.response)
-        //             .success(async (key) => {
-        //                 const res = await doctor.addMany(key);
-
-        //                 result(res)
-        //                     .success(({ data:{addCount} }) => {
-        //                         message.success(`成功添加 ${addCount} 名医生`);
-
-        //                         getList();
-        //                     })
-        //             });
-        //     }
-        // };
 
             const onUploadChange = ({ file }) => {
                 if(file.response){

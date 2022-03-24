@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { getMate } = require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const ConsultSchema = new mongoose.Schema({
 
@@ -8,7 +8,9 @@ const ConsultSchema = new mongoose.Schema({
     WhetherPublic:String,
     creationTime:String,
 
-    meta:getMate(),
+    meta:getMeta(),
 });
+
+ConsultSchema.pre('save',preSave);
 
 mongoose.model('Consult',ConsultSchema);

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { getMate } = require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const MedicineSchema = new mongoose.Schema({
 
@@ -13,7 +13,8 @@ const MedicineSchema = new mongoose.Schema({
     indications:String,
     creationTime:String,
 
-    meta:getMate(),
+    meta:getMeta(),
 });
+MedicineSchema.pre('save',preSave);
 
 mongoose.model('Medicine',MedicineSchema);

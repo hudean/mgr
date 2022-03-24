@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { getMate,preSave } = require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const ArticleSchema = new mongoose.Schema({
 
@@ -9,8 +9,9 @@ const ArticleSchema = new mongoose.Schema({
     DistributionContent:String,
     creationTime:String,
 
-    meta:getMate(),
+    meta:getMeta(),
 });
 
+ArticleSchema.pre('save',preSave);
 
 mongoose.model('Article',ArticleSchema);

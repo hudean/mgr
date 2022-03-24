@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { getMate,preSave } = require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const FeedbackSchema = new mongoose.Schema({
     
@@ -7,9 +7,9 @@ const FeedbackSchema = new mongoose.Schema({
     FeedbackUsers:String,
     creationTime:String,
 
-    meta:getMate(),
+    meta:getMeta(),
 });
 
-// FeedbackSchema.pre('save',preSave);
+FeedbackSchema.pre('save',preSave);
 
 mongoose.model('Feedback',FeedbackSchema);

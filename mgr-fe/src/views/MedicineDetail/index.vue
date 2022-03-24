@@ -45,25 +45,41 @@
     <div class="log">
         <a-card title="出入库日志">
             <template #extra>
-                <span>
-                    <a href="javascript:;">出库日志</a>
-                </span>
-                <span style="margin-left:12px;">
-                    <a href="javascript:;">入库日志</a>
+              <span>
+                  <a href="javascript:;" @click="logFilter('IN_COUNT')">
+                    <CheckOutlined v-if="curLogType === 'IN_COUNT'" />
+                    入库日志 
+                  </a>
+              </span>
+              <span style="margin-left:12px;">
+                  <a href="javascript:;" @click="logFilter('OUT_COUNT')">
+                    <CheckOutlined v-if="curLogType === 'OUT_COUNT'" />
+                    出库日志
+                  </a>
                 </span>
             </template>
             
             <div>
                 <a-table 
+                  :data-source="log"
+                  :columns="columns"
                   bordered
                   :pagination="false"
                 >
+                <template #createdAt="{ record }">
+                  {{formatTimestamp(record.meta.createdAt)}}
+                </template>
                 </a-table>
             </div>
 
             <space-between style="margin-top:24px;">
               <div />
-              <a-pagination />
+              <a-pagination
+                v-model:current="logCurPage"
+                :total="logTotal"
+                :page-size="10"
+                @change="setLogPage"
+              />
             </space-between>
         </a-card>
     </div>

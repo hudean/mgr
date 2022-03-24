@@ -7,7 +7,6 @@ const { loadExcel,getFirstSheet } = require('../../helpers/excel');
 const excel = require('../../helpers/excel');
 
 const Doctor = mongoose.model('Doctor');
-// const doctorImg = mongoose.model('doctorImg')
 
 const router = new Router({
     prefix: '/doctor',
@@ -15,7 +14,6 @@ const router = new Router({
 
 router.post('/add',async (ctx) => {
     const {
-        doctorImg,
         name,
         hospital,
         position,
@@ -26,7 +24,6 @@ router.post('/add',async (ctx) => {
     } = getBody(ctx);
 
     const doctor = new Doctor({
-        doctorImg,
         name,
         hospital,
         position,
@@ -65,6 +62,9 @@ router.get('/list',async (ctx)=>{
 
     const list = await Doctor
     .find(query)
+    .sort({
+        _id:-1,
+    })
     .skip((page - 1) * size )
     .limit(size)
     .exec();
@@ -104,13 +104,6 @@ router.delete('/:id',async(ctx)=>{
 router.post('/update',async (ctx) => {
     const {
         id,
-        // name,
-        // hospital,
-        // position,
-        // department,
-        // goodAt,
-        // hospitalGrade,
-        // creationTime,
         ...others
     } = ctx.request.body;
 

@@ -70,6 +70,8 @@
       </space-between>
     </a-card>
     
+
+
     <add-one 
     v-model:show="show"
     ></add-one>

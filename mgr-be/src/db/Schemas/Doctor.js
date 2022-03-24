@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { getMate } = require('../helpers');
+const { getMeta,preSave } = require('../helpers');
 
 const DoctorSchema = new mongoose.Schema({
     // doctorImg:String,
@@ -11,7 +11,9 @@ const DoctorSchema = new mongoose.Schema({
     hospitalGrade:String,
     creationTime:String,
 
-    meta:getMate(),
+    meta:getMeta(),
 });
+
+DoctorSchema.pre('save',preSave);
 
 mongoose.model('Doctor',DoctorSchema);
