@@ -1,14 +1,11 @@
 import { defineComponent, reactive } from 'vue';
-import { article } from '@/service';
+import { user } from '@/service';
 import { message } from 'ant-design-vue';
 import { result,clone } from '@/helpers/utils';
 
 const defaultFormData = {
-    ArticleTitle: '',
-    ArticleClassification: '',
-    Distributor: '',
-    DistributionContent: '',
-    creationTime: '0',
+    account:'',
+    password: '', 
 };
 
 export default defineComponent({
@@ -16,7 +13,6 @@ export default defineComponent({
         show:Boolean,
     },
     setup(props,context) {
-        console.log(props);
         const addForm = reactive(clone(defaultFormData));
 
         const close = () => {
@@ -25,8 +21,7 @@ export default defineComponent({
 
         const submit = async () => {
            const form = clone(addForm);
-           form.creationTime = addForm.creationTime.valueOf();
-           const res = await article.add(form);
+           const res = await user.add(form.account,form.password);
 
            result(res)
             .success((d,{ data }) => {

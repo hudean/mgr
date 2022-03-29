@@ -156,6 +156,7 @@ export default defineComponent({
       curEditArticle,
       updateCurArticle,
       onUploadChange,
+      getList,
     };
   },
 });

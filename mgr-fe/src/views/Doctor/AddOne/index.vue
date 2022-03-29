@@ -34,6 +34,9 @@
         <a-form-item label="医院等级">
           <a-input v-model:value="addForm.hospitalGrade" />
         </a-form-item>
+        <a-form-item label="个人简介">
+          <a-input v-model:value="addForm.personalProfile" />
+        </a-form-item>
         <a-form-item label="添加时间">
           <a-date-picker v-model:value="addForm.creationTime" />
         </a-form-item>

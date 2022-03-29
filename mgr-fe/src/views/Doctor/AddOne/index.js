@@ -10,7 +10,8 @@ const defaultFormData = {
     position: '',
     department: '',
     goodAt: '',
-    hospitalGrade: '',  
+    hospitalGrade: '', 
+    personalProfile:'', 
     creationTime: '0',
 };
 
@@ -19,8 +20,11 @@ export default defineComponent({
         show:Boolean,
     },
     setup(props,context) {
-        console.log(props);
         const addForm = reactive(clone(defaultFormData));
+
+        const close = () => {
+            context.emit('update:show',false);
+        };
 
         const submit = async () => {
            const form = clone(addForm);
@@ -32,12 +36,12 @@ export default defineComponent({
                 // 合并一个数组
                 Object.assign(addForm,defaultFormData);
                 message.success(data.msg);
+                close();
+                context.emit('getList');
             });
         };
 
-        const close = () => {
-            context.emit('update:show',false);
-        };
+        
 
         return{
             addForm,

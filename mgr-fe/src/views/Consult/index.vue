@@ -48,6 +48,8 @@
       :columns="columns" 
       :data-source="list"
       :pagination="false"
+      bordered
+      ellipsis=true
       >
         <template #creationTime="data">
           {{ formatTimestamp(data.record.creationTime) }}          
@@ -71,6 +73,7 @@
     
     <add-one 
     v-model:show="show"
+    @getList="getList"
     ></add-one>
 
     <update 

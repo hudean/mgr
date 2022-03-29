@@ -34,6 +34,7 @@
       :data-source="list"
       :pagination="false"
       bordered
+      ellipsis=true
       >
         <template #creationTime="data">
           {{ formatTimestamp(data.record.creationTime) }}          
@@ -44,11 +45,13 @@
           <a href="javascript:;"  @click="updateCount('OUT_COUNT',data.record)">出库</a>        
         </template>
         <template #actions="record">
-          <a class="detail" href="javascript:;" @click="toDetail(record)">详情</a>
+          <div  class="act">
+            <span class="detail" href="javascript:;" @click="toDetail(record)">详情</span>
           &emsp;
-          <a class="edit" href="javascript:;" @click="update(record)">编辑</a>
+          <span class="edit" href="javascript:;" @click="update(record)">编辑</span>
           &emsp;
-          <a class="del" href="javascript:;" @click="remove(record)">删除</a>          
+          <span class="del" href="javascript:;" @click="remove(record)">删除</span>  
+          </div>        
         </template>
       </a-table>
       <space-between style="margin-top:23px">
@@ -64,6 +67,7 @@
     
     <add-one 
     v-model:show="show"
+    @getList="getList"
     ></add-one>
 
     <update 

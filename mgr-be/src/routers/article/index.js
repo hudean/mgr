@@ -53,7 +53,7 @@ router.get('/list',async (ctx)=>{
     const query = {};
 
     if(keyword){
-        query.name = keyword;
+        query.ArticleTitle = keyword;
     }
 
     const list = await Article

@@ -5,3 +5,4 @@ export * as feedback from './feedback';
 export * as consult from './consult';
 export * as medicine from './medicine';
 export * as inventoryLog from './inventory-log';
+export * as user from './user';

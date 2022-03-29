@@ -7,6 +7,7 @@ import AddOne from './AddOne/index.vue';
 import Update from './Update/index.vue';
 import { Item } from 'ant-design-vue/lib/menu';
 
+
 export default defineComponent({
     components:{
         AddOne,
@@ -43,6 +44,10 @@ export default defineComponent({
                 dataIndex: 'hospitalGrade'
             },
             {
+                title: '个人简介',
+                dataIndex: 'personalProfile'
+            },
+            {
                 title: '创建时间',
                 dataIndex: 'creationTime',
                 slots:{
@@ -67,9 +72,7 @@ export default defineComponent({
         const isSearch = ref(false);
         const curEditDoctor = ref({});
 
-        // 获取书籍列表
-        //------
-            // 获取文章列表
+    // 获取文章列表
     const getList = async () => {
         const res = await doctor.list({
           page: curPage.value,
@@ -170,7 +173,8 @@ export default defineComponent({
             update,
             curEditDoctor,
             updateCurDoctor,
-            onUploadChange
+            onUploadChange,
+            getList,
         };
     },
 });

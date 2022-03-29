@@ -20,6 +20,7 @@ router.post('/add',async (ctx) => {
         department,
         goodAt,
         hospitalGrade,
+        personalProfile,
         creationTime,
     } = getBody(ctx);
 
@@ -30,6 +31,7 @@ router.post('/add',async (ctx) => {
         department,
         goodAt,
         hospitalGrade,
+        personalProfile,
         creationTime,
     });
 
@@ -164,6 +166,7 @@ router.post('/addMany',async(ctx)=> {
             department,
             goodAt,
             hospitalGrade,
+            personalProfile,
             creationTime,
         ] = record;
 
@@ -174,6 +177,7 @@ router.post('/addMany',async(ctx)=> {
             department,
             goodAt,
             hospitalGrade,
+            personalProfile,
             creationTime,
         });
     }

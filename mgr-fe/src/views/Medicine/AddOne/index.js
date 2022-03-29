@@ -23,6 +23,11 @@ export default defineComponent({
         console.log(props);
         const addForm = reactive(clone(defaultFormData));
 
+        const close = () => {
+            context.emit('update:show',false);
+        };
+
+
         const submit = async () => {
            const form = clone(addForm);
            form.creationTime = addForm.creationTime.valueOf();
@@ -33,13 +38,12 @@ export default defineComponent({
                 // 合并一个数组
                 Object.assign(addForm,defaultFormData);
                 message.success(data.msg);
+                close();
+                context.emit('getList');
             });
         };
 
-        const close = () => {
-            context.emit('update:show',false);
-        };
-
+        
         return{
             addForm,
             submit,

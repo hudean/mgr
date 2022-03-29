@@ -1,10 +1,14 @@
 .search{
-    width: 200px;
+    width: 300px;
     display: flex;
     align-items: center;
     a{
-        width: 40px;
+        width: 50px;
         margin-left: 16px;
+        background-color: #ff5722;
+        color: white;
+        text-align: center;
+        padding: 5px 5px;
     }
 }
 .ant-btn-primary{
@@ -22,9 +26,12 @@
 .ant-upload{
     margin: 0 10px !important;
 }
+
+
 .edit,.del,.detail{
-    padding: 6px 7px;
+    padding: 5px 4px;
     color: white;
+
 }
 .detail{
     background-color:skyblue;
@@ -35,6 +42,17 @@
 .del{
     background-color: #ff5722;
 }
+
+::v-deep  .ant-table-tbody > tr > td{
+    padding: 16px 7px !important;
+    max-width: 110px;
+    border-bottom: 0;
+    text-align: center !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 ::v-deep .ant-table-thead > tr > th {
     font-weight: bolder !important;

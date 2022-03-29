@@ -5,6 +5,8 @@ require('./Schemas/Doctor');
 require('./Schemas/Consult');
 require('./Schemas/Medicine');
 require('./Schemas/InventoryLog');
+require('./Schemas/User');
+
 
 const mongoose = require('mongoose');
 // 1、给哪个数据库

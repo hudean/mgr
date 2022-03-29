@@ -230,6 +230,7 @@ export default defineComponent({
             onUploadChange,
             updateCount,
             toDetail,
+            getList,
         };
     },
 });

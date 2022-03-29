@@ -51,7 +51,7 @@ router.get('/list',async (ctx)=>{
     const query = {};
 
     if(keyword){
-        query.name = keyword;
+        query.Consultants = keyword;
     }
 
     const list = await Consult

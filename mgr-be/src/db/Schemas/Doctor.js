@@ -9,6 +9,7 @@ const DoctorSchema = new mongoose.Schema({
     department:String,
     goodAt:String,
     hospitalGrade:String,
+    personalProfile:String,
     creationTime:String,
 
     meta:getMeta(),

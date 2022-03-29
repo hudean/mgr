@@ -1,13 +1,20 @@
 <template>
-  <div id="nav">
-    
-  </div>
-  <router-view/>
+  <div id="nav"></div>
+  <router-view />
 </template>
 
+<script>
+export default {
+  changeLang() {
+    let locale = localStorage.getItem("language") || "zh";
+    let temp = locale === "zh" ? "en" : "zh";
+    this.$i18n.locale = temp; //改变当前语言
+    localStorage.language = temp;
+  },
+};
+</script>
+
 <style lang="scss">
-
-
 #nav {
   padding: 30px;
 
@@ -20,7 +27,7 @@
     }
   }
 }
-  body{
-    background-color: #eceaea !important;
-  }
+body {
+  background-color: #eceaea !important;
+}
 </style>

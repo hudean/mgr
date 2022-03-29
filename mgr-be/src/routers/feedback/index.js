@@ -49,7 +49,7 @@ router.get('/list',async (ctx)=>{
     const query = {};
 
     if(keyword){
-        query.name = keyword;
+        query.FeedbackUsers = keyword;
     }
 
     const list = await Feedback
@@ -96,13 +96,6 @@ router.delete('/:id',async(ctx)=>{
 router.post('/update',async (ctx) => {
     const {
         id,
-        // name,
-        // hospital,
-        // position,
-        // department,
-        // goodAt,
-        // hospitalGrade,
-        // creationTime,
         ...others
     } = ctx.request.body;
 

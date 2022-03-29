@@ -127,6 +127,7 @@ export default defineComponent({
             update,
             curEditFeedback,
             updateCurFeedback,
+            getList,
         };
     },
 });

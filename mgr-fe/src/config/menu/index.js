@@ -16,6 +16,10 @@ export default [
     url: '/medicine',
   },
   {
+    title: '用户管理',
+    url: '/user',
+  },
+  {
     title: '意见反馈',
     url: '/feedback',
   },

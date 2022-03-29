@@ -18,6 +18,7 @@ export default defineComponent({
             department: '',
             goodAt: '',
             hospitalGrade: '',  
+            personalProfile:'',
             creationTime: '0',
         });
 

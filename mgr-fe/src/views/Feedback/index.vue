@@ -56,6 +56,7 @@
     
     <add-one 
     v-model:show="show"
+    @getList="getList"
     ></add-one>
 
     <update 

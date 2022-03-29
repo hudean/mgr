@@ -152,7 +152,8 @@ export default defineComponent({
             update,
             curEditConsult,
             updateCurConsult,
-            onUploadChange
+            onUploadChange,
+            getList
         };
     },
 });

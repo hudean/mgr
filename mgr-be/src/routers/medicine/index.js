@@ -75,7 +75,7 @@ router.get('/list',async (ctx)=>{
     const query = {};
 
     if(keyword){
-        query.name = keyword;
+        query.drugName = keyword;
     }
 
     const list = await Medicine

@@ -2,7 +2,6 @@
   <div>
     <a-card>
       <h2 style="color:#3c8dbc;">文章列表</h2>
-
       <a-divider></a-divider>
         <div class="operation">
         <div class="search">
@@ -57,6 +56,7 @@
     
     <add-one 
     v-model:show="show"
+    @getList="getList"
     ></add-one>
 
     <update 
@@ -64,6 +64,9 @@
     :article="curEditArticle"
     :update="updateCurArticle"
     ></update>
+    <div>
+      {{ $t('msg.test') }}
+    </div>
     <!-- <img src="../../../../mgr-be/upload/0de90267-313f-406e-94cd-d6d3d2c24d41.jpg" alt=""> -->
   </div>
 </template>
