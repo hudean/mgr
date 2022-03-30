@@ -6,6 +6,7 @@ require('./Schemas/Consult');
 require('./Schemas/Medicine');
 require('./Schemas/InventoryLog');
 require('./Schemas/User');
+require('./Schemas/Character');
 
 
 const mongoose = require('mongoose');

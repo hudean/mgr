@@ -8,6 +8,7 @@ const consult = require('./consult');
 const medicine = require('./medicine');
 const inventoryLog = require('./inventory-log');
 const user = require('./user/index');
+const character = require('./character');
 
 module.exports = (app) =>{
     app.use(auth.routes());
@@ -20,4 +21,5 @@ module.exports = (app) =>{
     app.use(medicine.routes());
     app.use(inventoryLog.routes());
     app.use(user.routes());
+    app.use(character.routes());
 };
