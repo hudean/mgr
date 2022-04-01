@@ -60,11 +60,11 @@ const router = createRouter({
 
 
 router.beforeEach(async (to,from,next)=>{
-  if(!window.characterInfo){
+  if(!store.state.characterInfo.length){
       store.dispatch('getCharacterInfo');
   }
-  
-  
+
+  store.dispatch('getUserInfo');
   next();
 });
 

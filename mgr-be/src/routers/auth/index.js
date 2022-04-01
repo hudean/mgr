@@ -2,7 +2,9 @@ const Router = require('@koa/router');
 const mongoose = require('mongoose');
 const { getBody } = require('../../helpers/utils');
 const jwt = require('jsonwebtoken');
+const config = require('../../project.config');
 
+const User = mongoose.model('User');
 const InviteCode = mongoose.model('InviteCode');
 
 const router = new Router({
@@ -102,6 +104,7 @@ router.post('/login', async (ctx) => {
     }
     const user = {
         account: one.account,
+        character:one.character,
         _id: one._id
     };
 
@@ -111,7 +114,7 @@ router.post('/login', async (ctx) => {
             msg: '登录成功',
             data: {
                 user,
-                token: jwt.sign(user, 'mgr-be')
+                token: jwt.sign(user, config.JWT_SECRET)
             },
         };
         return

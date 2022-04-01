@@ -17,10 +17,11 @@ export const remove = (id) => {
     return axios.delete(`http://localhost:3000/user/${id}`);
 };
 
-export const add = (account,password) => {
+export const add = (account,password,character) => {
     return axios.post('http://localhost:3000/user/add',{
         account,
         password,
+        character,
     });
 };
 
@@ -30,3 +31,13 @@ export const resetPassword = (id) => {
     });
 };
 
+export const editCharacter = (characterId,userId) =>{
+    return axios.post('http://localhost:3000/user/update/character',{
+        character:characterId,
+        userId:userId,
+    });
+};
+
+export const info = () => {
+    return axios.get('http://localhost:3000/user/info')
+};
