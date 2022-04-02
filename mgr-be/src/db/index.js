@@ -7,6 +7,10 @@ require('./Schemas/Medicine');
 require('./Schemas/InventoryLog');
 require('./Schemas/User');
 require('./Schemas/Character');
+require('./Schemas/Log');
+require('./Schemas/LogResponse');
+require('./Schemas/ForgetPassword');
+require('./Schemas/ArticleClassify');
 
 
 const mongoose = require('mongoose');

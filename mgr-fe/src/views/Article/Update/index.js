@@ -2,6 +2,7 @@ import { defineComponent, reactive,watch } from 'vue';
 import { article } from '@/service';
 import { message } from 'ant-design-vue';
 import { result,clone } from '@/helpers/utils';
+import store from '@/store';
 import moment from 'moment';
 import WangEditor  from './WangEditor.vue';
 
@@ -49,6 +50,7 @@ export default defineComponent({
                 context.emit('update',data);
                 message.success(msg);
                 close();
+                context.emit('getListEdit');
              });
         };
 
@@ -57,6 +59,7 @@ export default defineComponent({
             submit,
             props,
             close,
+            store:store.state,
         }
     }
 });

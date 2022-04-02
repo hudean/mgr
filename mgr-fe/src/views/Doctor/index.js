@@ -13,7 +13,10 @@ export default defineComponent({
         AddOne,
         Update,
     },
-    setup() {
+    props:{
+        simple:Boolean,
+    },
+    setup(props) {
         const columns = [
             {
                 title: '头像',
@@ -54,14 +57,16 @@ export default defineComponent({
                     customRender:'creationTime'
                 }
             },
-            {
+        ];
+
+        if(!props.simple){
+            columns.push({
                 title: '操作',
                 slots:{
                     customRender:'actions'
                 }
-            },
-            
-        ];
+            },)
+        }
 
         const show = ref(false);
         const showUpdateModal = ref(false);
@@ -175,6 +180,7 @@ export default defineComponent({
             updateCurDoctor,
             onUploadChange,
             getList,
+            simple:props.simple
         };
     },
 });

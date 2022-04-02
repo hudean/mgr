@@ -1,11 +1,12 @@
 import { createStore, Store } from 'vuex';
-import { character,user } from '@/service';
+import { character,user ,articleClassify} from '@/service';
 import { getCharacterInfoById } from '@/helpers/character';
 import { result } from '@/helpers/utils';
 
 export default createStore({
   state: {
     characterInfo:[],
+    articleClassify:[],
     userInfo:{},
     userCharacter:{},
   },
@@ -18,11 +19,24 @@ export default createStore({
     },
     setUserCharacter(state,userCharacter){
       state.userCharacter = userCharacter;
+    },
+    setArticleClassify(state,articleClassify){
+      state.articleClassify = articleClassify;
     }
   },
   actions: {
+    // 获取文章分类
+    async getArticleClassify(store){
+      const res = await articleClassify.list();
+
+      result(res)
+        .success(({data}) => {
+          store.commit('setArticleClassify',data);
+        });
+    },
+    // 获取角色信息
     async getCharacterInfo(store){
-      const res = await character.list()
+      const res = await character.list();
 
       result(res)
         .success(({ data }) => {

@@ -12,9 +12,22 @@
         <a-form-item label="文章标题">
           <a-input v-model:value="editForm.ArticleTitle" />
         </a-form-item>
-        <a-form-item label="文章类型">
-          <a-input v-model:value="editForm.ArticleClassification" />
+          <a-form-item label="文章分类">
+           <a-select
+            ref="select"
+            v-model:value="editForm.ArticleClassification"
+            style="width: 120px"
+          >
+            <a-select-option 
+            v-for="item in store.articleClassify"
+            :key="item._id"
+            :value="item._id"
+            >
+            {{item.title}}
+            </a-select-option>
+          </a-select>
         </a-form-item>
+
         <a-form-item label="发布人">
           <a-input v-model:value="editForm.Distributor" />
         </a-form-item>

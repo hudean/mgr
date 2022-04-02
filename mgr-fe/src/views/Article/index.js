@@ -1,20 +1,23 @@
 import { defineComponent, ref, onMounted } from 'vue';
-import { article } from '@/service';
+import { article,articleClassify } from '@/service';
 import { message } from 'ant-design-vue';
 import { BookFilled, UploadOutlined } from '@ant-design/icons-vue';
 import { result, formatTimestamp } from '@/helpers/utils';
 import { Item } from 'ant-design-vue/lib/menu';
 import AddOne from './AddOne/index.vue';
 import Update from './Update/index.vue';
+import {getClassifyTitleById} from '@/helpers/article-classify';
 
 
 export default defineComponent({
   components: {
     AddOne,
     Update,
-
   },
-  setup() {
+  props:{
+    simple:Boolean,
+  },
+  setup(props) {
     const columns = [
       {
         title: '文章标题',
@@ -22,7 +25,10 @@ export default defineComponent({
       },
       {
         title: '文章分类',
-        dataIndex: 'ArticleClassification',
+        slots: {
+          customRender: 'ArticleClassification',
+        },
+
       },
       {
         title: '分布人',
@@ -39,13 +45,22 @@ export default defineComponent({
           customRender: 'creationTime',
         },
       },
-      {
-        title: '操作',
-        slots: {
-          customRender: 'actions',
-        },
-      },
+      // {
+      //   title: '操作',
+      //   slots: {
+      //     customRender: 'actions',
+      //   },
+      // },
     ];
+
+    if(!props.simple){
+      columns.push({
+          title: '操作',
+          slots:{
+              customRender:'actions'
+          }
+      },)
+  }
 
     const show = ref(false);
     const showUpdateModal = ref(false);
@@ -55,6 +70,20 @@ export default defineComponent({
     const keyword = ref('');
     const isSearch = ref(false);
     const curEditArticle = ref({});
+    // const articleClassifyList = ref([]);
+
+
+    // // 获取文章分类的列表
+    // const getArticleClassify = async () => {
+    //   classifyLoading.value = true;
+    //   const res = await articleClassify.list();
+    //   classifyLoading.value = false;
+    //   result(res)
+    //     .success(({ data }) => {
+    //       articleClassifyList.value = data;
+    //     })
+    // };
+
 
     // 获取文章列表
     const getList = async () => {
@@ -157,6 +186,9 @@ export default defineComponent({
       updateCurArticle,
       onUploadChange,
       getList,
+      getClassifyTitleById,
+      // articleClassifyList,
+      simple:props.simple,
     };
   },
 });

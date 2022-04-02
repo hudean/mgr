@@ -38,6 +38,7 @@ export default defineComponent({
                 context.emit('update',data);
                 message.success(msg);
                 close();
+                context.emit('getListEdit');
              });
         };
 

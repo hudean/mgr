@@ -1,6 +1,7 @@
 <template>
   <div>
-    <a-card>
+    <a-card :title="simple ? '最近添加的文章':''">
+      <div v-if="!simple">
       <h2 style="color:#3c8dbc;">文章列表</h2>
       <a-divider></a-divider>
         <div class="operation">
@@ -14,7 +15,9 @@
           <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
         </div>
         <div class="upload">
-          <a-button @click="show = true">添加文章</a-button>
+          <a-button 
+          @click="show = true"
+          >添加文章</a-button>
           &nbsp;
           <!-- 上传图片 -->
           <a-upload 
@@ -27,23 +30,27 @@
         </div>
 
       <a-divider></a-divider>
-
+    </div>
       <a-table 
       :columns="columns" 
       :data-source="list"
       :pagination="false"
       bordered
+      :scroll="{x:'max-content'}"
       >
         <template #creationTime="data">
           {{ formatTimestamp(data.record.creationTime) }}          
         </template>
-        <template #actions="record">
+        <template #actions="record" v-if="!simple">
           <a href="javascript:;" @click="update(record)">编辑</a>
           &emsp;
           <a href="javascript:;" @click="remove(record)">删除</a>          
         </template>
+        <template #ArticleClassification="{ record }">
+          {{ getClassifyTitleById(record.ArticleClassification) }}
+        </template>
       </a-table>
-      <space-between style="margin-top:23px">
+      <space-between v-if="!simple" style="margin-top:23px">
         <div></div>
         <a-pagination
           v-model:current="curPage"
@@ -57,12 +64,14 @@
     <add-one 
     v-model:show="show"
     @getList="getList"
+    :classifyList="articleClassifyList"
     ></add-one>
 
     <update 
     v-model:show="showUpdateModal"
     :article="curEditArticle"
     :update="updateCurArticle"
+    @getListEdit="getList"
     ></update>
     <div>
       {{ $t('msg.test') }}

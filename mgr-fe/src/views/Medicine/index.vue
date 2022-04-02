@@ -15,7 +15,7 @@
           <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
         </div>
         <div class="upload">
-          <a-button @click="show = true">添加药品</a-button>
+          <a-button v-only-admin @click="show = true">添加药品</a-button>
           &nbsp;
           <!-- 上传图片 -->
           <a-upload 
@@ -48,9 +48,9 @@
           <div  class="act">
             <span class="detail" href="javascript:;" @click="toDetail(record)">详情</span>
           &emsp;
-          <span class="edit" href="javascript:;" @click="update(record)">编辑</span>
+          <span v-only-admin class="edit" href="javascript:;" @click="update(record)">编辑</span>
           &emsp;
-          <span class="del" href="javascript:;" @click="remove(record)">删除</span>  
+          <span  v-only-admin  class="del" href="javascript:;" @click="remove(record)">删除</span>  
           </div>        
         </template>
       </a-table>
@@ -74,6 +74,7 @@
     v-model:show="showUpdateModal"
     :medicine="curEditMedicine"
     :update="updateCurMedicine"
+    @getListEdit="getList"
     ></update>
   </div>
 </template>

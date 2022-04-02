@@ -3,7 +3,7 @@
     <a-card>
       <space-between>
         <div class="medicineName">{{d.drugName}}</div>
-        <div>
+        <div v-only-admin>
           <a-button size="samll" type="primary" @click="showUpdateModal = true">编辑</a-button>&nbsp;
           <a-button size="samll" type="danger" @click="remove">删除</a-button>
         </div>
