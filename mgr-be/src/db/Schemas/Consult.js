@@ -5,7 +5,10 @@ const ConsultSchema = new mongoose.Schema({
 
     Consultants:String,
     ConsultationContent:String,
+    ConsultImg:String,
     WhetherPublic:String,
+    Reply:String,
+    Responder:String,
     creationTime:String,
 
     meta:getMeta(),

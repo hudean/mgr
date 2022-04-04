@@ -14,7 +14,9 @@
           v-model:value="keyword"
           @search="onSearch"
           />
-          <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
+          <!-- <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a> -->
+          <a-button v-if="isSearch" @click="backAll" type="primary" class="backAll" >返回</a-button>
+          <a-button @click="refresh" type="primary" class="refresh">刷新</a-button>
         </div>
         <div class="upload">
           <a-button @click="show = true">添加医生</a-button>

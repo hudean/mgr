@@ -24,9 +24,8 @@ export default defineComponent({
             },
             {
                 title: '反馈时间',
-                dataIndex: 'creationTime',
                 slots:{
-                    customRender:'creationTime'
+                    customRender:'createdAt'
                 }
             },
             {
@@ -110,6 +109,9 @@ export default defineComponent({
             Object.assign(curEditFeedback.value,newData);
         };
 
+        const refresh = () => {
+            getList();
+        }
         return {
             columns,
             show,
@@ -128,6 +130,7 @@ export default defineComponent({
             curEditFeedback,
             updateCurFeedback,
             getList,
+            refresh,
         };
     },
 });

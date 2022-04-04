@@ -31,10 +31,15 @@
         <a-form-item label="发布人">
           <a-input v-model:value="editForm.Distributor" />
         </a-form-item>
+         <a-form-item label="文章图片">
+          <a-input v-model:value="editForm.ArticleImg" />
+        </a-form-item>
         <a-form-item label="发布时间">
           <a-date-picker v-model:value="editForm.creationTime" />
         </a-form-item>
-        <a-form-item label="发布内容">
+        
+        <a-form-item label="发布内容" >
+          <!-- prop="descs" -->
           <!-- <a-input v-model:value="editForm.DistributionContent" ></a-input> -->
           <WangEditor v-model:value="editForm.DistributionContent" @sendEditor='sendEditor'></WangEditor>
         </a-form-item>

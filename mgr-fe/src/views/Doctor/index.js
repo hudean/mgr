@@ -98,6 +98,8 @@ export default defineComponent({
             getList();
         });
 
+
+
         // 设置页码
         const setPage = (page) => {
             curPage.value = page;
@@ -161,6 +163,10 @@ export default defineComponent({
                         });
                 }
             };
+            // 刷新
+            const refresh = () => {
+                getList();
+            }
         return {
             columns,
             show,
@@ -180,6 +186,7 @@ export default defineComponent({
             updateCurDoctor,
             onUploadChange,
             getList,
+            refresh,
             simple:props.simple
         };
     },

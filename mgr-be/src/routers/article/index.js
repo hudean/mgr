@@ -17,6 +17,7 @@ router.post('/add',async (ctx) => {
         ArticleTitle,
         ArticleClassification,
         Distributor,
+        ArticleImg,
         DistributionContent,
         creationTime,
     } = getBody(ctx);
@@ -25,6 +26,7 @@ router.post('/add',async (ctx) => {
         ArticleTitle,
         ArticleClassification,
         Distributor,
+        ArticleImg,
         DistributionContent,
         creationTime,
     });
@@ -157,6 +159,7 @@ router.post('/addMany',async(ctx)=> {
             ArticleTitle,
             ArticleClassification,
             Distributor,
+            ArticleImg,
             DistributionContent,
             creationTime,
         ] = record;
@@ -165,6 +168,7 @@ router.post('/addMany',async(ctx)=> {
             ArticleTitle,
             ArticleClassification,
             Distributor,
+            ArticleImg,
             DistributionContent,
             creationTime,
         });

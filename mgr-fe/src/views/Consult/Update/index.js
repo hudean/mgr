@@ -13,7 +13,10 @@ export default defineComponent({
         const editForm = reactive({
             Consultants: '',
             ConsultationContent: '',
+            ConsultImg:'',
             WhetherPublic: '',
+            Reply:'',
+            Responder:'',
             creationTime: '0',
         });
 

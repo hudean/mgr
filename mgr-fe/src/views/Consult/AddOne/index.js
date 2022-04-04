@@ -6,6 +6,7 @@ import { result,clone } from '@/helpers/utils';
 const defaultFormData = {
     Consultants:'',
     ConsultationContent: '',
+    ConsultImg:'',
     WhetherPublic: '',
     creationTime: '0',
 };

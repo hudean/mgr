@@ -8,18 +8,23 @@ export default defineComponent({
         DownOutlined,
     },
     setup(){
-        const options = [
-            {
-                title: '中文',
-                dataIndex: 'Chinese'
-            },
-            {
-                title: '英文',
-                dataIndex: 'English'
-            },
-        ]
+
+        // 退出操作
+        // const logout = () => {
+        //     window.location.href = 'auth';
+        // };
+        // const options = [
+        //     {
+        //         title: '中文',
+        //         dataIndex: 'Chinese'
+        //     },
+        //     {
+        //         title: '英文',
+        //         dataIndex: 'English'
+        //     },
+        // ]
         return {
-            options
+            // logout
         }
     },
     

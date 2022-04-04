@@ -16,6 +16,7 @@ router.post('/add',async (ctx) => {
     const {
         Consultants,
         ConsultationContent,
+        ConsultImg,
         WhetherPublic,
         creationTime,
     } = getBody(ctx);
@@ -23,6 +24,7 @@ router.post('/add',async (ctx) => {
     const consult = new Consult({
         Consultants,
         ConsultationContent,
+        ConsultImg,
         WhetherPublic,
         creationTime,
     });
@@ -98,13 +100,6 @@ router.delete('/:id',async(ctx)=>{
 router.post('/update',async (ctx) => {
     const {
         id,
-        // name,
-        // hospital,
-        // position,
-        // department,
-        // goodAt,
-        // hospitalGrade,
-        // creationTime,
         ...others
     } = ctx.request.body;
 
@@ -159,22 +154,18 @@ router.post('/addMany',async(ctx)=> {
         let record = sheet[i];
 
         const [
-            name,
-            hospital,
-            position,
-            department,
-            goodAt,
-            hospitalGrade,
+            Consultants,
+            ConsultationContent,
+            ConsultImg,
+            WhetherPublic,
             creationTime,
         ] = record;
 
         arr.push({
-            name,
-            hospital,
-            position,
-            department,
-            goodAt,
-            hospitalGrade,
+            Consultants,
+            ConsultationContent,
+            ConsultImg,
+            WhetherPublic,
             creationTime,
         });
     }

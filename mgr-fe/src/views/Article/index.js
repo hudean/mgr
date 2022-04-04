@@ -28,7 +28,6 @@ export default defineComponent({
         slots: {
           customRender: 'ArticleClassification',
         },
-
       },
       {
         title: '分布人',
@@ -39,10 +38,13 @@ export default defineComponent({
         dataIndex: 'DistributionContent',
       },
       {
+        title: '文章图片',
+        dataIndex: 'ArticleImg',
+      },
+      {
         title: '发布时间',
-        dataIndex: 'creationTime',
         slots: {
-          customRender: 'creationTime',
+          customRender: 'createdAt',
         },
       },
       // {
@@ -167,6 +169,12 @@ export default defineComponent({
           });
       }
     };
+
+    // 点击刷新按钮
+    const refresh = () => {
+      getList();
+    }
+
     return {
       columns,
       show,
@@ -189,6 +197,7 @@ export default defineComponent({
       getClassifyTitleById,
       // articleClassifyList,
       simple:props.simple,
+      refresh,
     };
   },
 });

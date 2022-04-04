@@ -23,12 +23,12 @@ export default defineComponent({
 
         const columns = [
             {
-                title: '价格',
-                dataIndex: 'price'
-            },
-            {
                 title: '药品名称',
                 dataIndex: 'drugName'
+            },
+            {
+                title: '价格',
+                dataIndex: 'price'
             },
             {
                 title: '药房',
@@ -39,6 +39,10 @@ export default defineComponent({
                 slots:{
                     customRender:'count'
                 }
+            },
+            {
+                title: '药品图片',
+                dataIndex: 'medicineImg'
             },
             {
                 title: '生产企业',
@@ -58,9 +62,8 @@ export default defineComponent({
             },
             {
                 title: '创建时间',
-                dataIndex: 'creationTime',
                 slots:{
-                    customRender:'creationTime'
+                    customRender:'createdAt'
                 }
             },
             {
@@ -206,6 +209,9 @@ export default defineComponent({
         })
     };
 
+    const refresh = () => {
+        getList();
+    }
     // 进入药物详情页
     const toDetail = ({record}) => {
         router.push(`/medicine/${record._id}`);
@@ -231,6 +237,7 @@ export default defineComponent({
             updateCount,
             toDetail,
             getList,
+            refresh,
         };
     },
 });

@@ -40,9 +40,7 @@
         <a-form-item label="主治功能">
           <a-input v-model:value="addForm.indications" />
         </a-form-item>
-        <a-form-item label="创建时间">
-          <a-date-picker v-model:value="addForm.creationTime" />
-        </a-form-item>
+
       </a-form>
     </a-modal>
   </div>

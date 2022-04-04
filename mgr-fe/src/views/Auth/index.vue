@@ -25,6 +25,7 @@
             size="large" 
             placeholder="密码"
             v-model:value="loginForm.password"
+            type="password"
             >
               <template v-slot:prefix>
                 <LockOutlined />
@@ -60,6 +61,7 @@
             size="large" 
             placeholder="密码"
             v-model:value="regForm.password"
+            type="password"
             >
               <template v-slot:prefix>
                 <LockOutlined />
@@ -71,6 +73,7 @@
             size="large" 
             placeholder="邀请码"
             v-model:value="regForm.inviteCode"
+            type="password"
             >
               <template v-slot:prefix>
                 <MailOutlined />

@@ -6,6 +6,7 @@ const ArticleSchema = new mongoose.Schema({
     ArticleTitle:String,
     ArticleClassification:String,
     Distributor:String,
+    ArticleImg:String,
     DistributionContent:String,
     creationTime:String,
 

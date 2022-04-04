@@ -2,7 +2,6 @@
   <div>
     <a-card>
       <h2 style="color:#3c8dbc;">咨询列表</h2>
-
       <a-divider></a-divider>
         <div class="operation">
         <div class="search">
@@ -12,7 +11,8 @@
           v-model:value="keyword"
           @search="onSearch"
           />
-          <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
+          <a-button v-if="isSearch" href="javascript:;" @click="backAll">返回</a-button>
+          <a-button  href="javascript:;" @click="refresh">刷新</a-button>
         </div>
         <div class="upload">
           <a-button @click="show = true">添加咨询</a-button>
@@ -24,21 +24,6 @@
           >
             <a-button type="primary">上传 Excel 添加</a-button>
           </a-upload>
-
-          <!-- <a-upload action="http://localhost:3000/upload/file" v-model:file-list="fileList">
-          <a-button>
-            <upload-outlined></upload-outlined>
-            上传图片
-          </a-button>
-        </a-upload> -->
-
-          &nbsp;
-          <!-- 上传Excel -->
-          <!-- <a-upload 
-            action="http://localhost:3000/upload/file"
-          >
-            <a-button @click="upload" type="primary">上传 Excel</a-button>
-          </a-upload> -->
         </div>
         </div>
 
@@ -51,11 +36,11 @@
       bordered
       ellipsis=true
       >
-        <template #creationTime="data">
-          {{ formatTimestamp(data.record.creationTime) }}          
+        <template #createdAt="{record }">
+            {{formatTimestamp(record.meta.createdAt)}}
         </template>
         <template #actions="record">
-          <a href="javascript:;" @click="update(record)">编辑</a>
+          <a href="javascript:;" @click="update(record)">回复</a>
           &emsp;
           <a href="javascript:;" @click="remove(record)">删除</a>          
         </template>
@@ -82,7 +67,6 @@
     :update="updateCurConsult"
     @getListEdit="getList"
     ></update>
-    <!-- <img src="../../../../mgr-be/upload/0de90267-313f-406e-94cd-d6d3d2c24d41.jpg" alt=""> -->
   </div>
 </template>
 

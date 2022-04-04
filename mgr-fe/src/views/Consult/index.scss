@@ -32,6 +32,9 @@ a:nth-child(1){
 a:nth-child(2){
     background-color: #ff5722;
 }
+a:nth-child(3){
+        background-color: #86d2f8;
+}
 ::v-deep .ant-table-thead > tr > th {
     font-weight: bolder !important;
     background-color:#f2f2f2  !important;   //如果不生效 记得加后面的这个important

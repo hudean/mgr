@@ -12,7 +12,8 @@
           v-model:value="keyword"
           @search="onSearch"
           />
-          <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
+          <a-button v-if="isSearch" href="javascript:;" @click="backAll">返回</a-button>
+          <a-button @click="refresh" href="javascript:;">刷新</a-button>
         </div>
         <div class="upload">
           <a-button v-only-admin @click="show = true">添加药品</a-button>
@@ -36,8 +37,8 @@
       bordered
       ellipsis=true
       >
-        <template #creationTime="data">
-          {{ formatTimestamp(data.record.creationTime) }}          
+        <template #createdAt="{ record }">
+            {{ formatTimestamp(record.meta.createdAt) }}
         </template>
         <template #count="data">
           <a href="javascript:;" @click="updateCount('IN_COUNT',data.record)">入库</a>

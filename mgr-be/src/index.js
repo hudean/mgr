@@ -21,9 +21,9 @@ connect().then(() => {
     app.use(catchTokenError);
     
     
-    koaJwtMiddleware(app);
+    // koaJwtMiddleware(app);
     
-    app.use(logMiddleware);
+    // app.use(logMiddleware);
 
     registerRoutes(app);
 

@@ -12,8 +12,10 @@
           v-model:value="keyword"
           @search="onSearch"
           />
-          <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
+          <a-button v-if="isSearch" href="javascript:;" @click="backAll" class="backBtn">返回</a-button>
+          <a-button class="refresh" @click="refresh">刷新</a-button>
         </div>
+        
         <div class="upload">
           <a-button 
           @click="show = true"
@@ -38,8 +40,8 @@
       bordered
       :scroll="{x:'max-content'}"
       >
-        <template #creationTime="data">
-          {{ formatTimestamp(data.record.creationTime) }}          
+        <template #createdAt="{record }">
+            {{formatTimestamp(record.meta.createdAt)}}
         </template>
         <template #actions="record" v-if="!simple">
           <a href="javascript:;" @click="update(record)">编辑</a>

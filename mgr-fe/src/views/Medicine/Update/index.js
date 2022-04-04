@@ -16,11 +16,12 @@ export default defineComponent({
             drugName: '',
             pharmacy: '',
             count: '',
+            medicineImg:'',
             manufacturer: '',
             specification: '', 
             element:'',
             indications:'',
-            creationTime: '0',
+            // creationTime: '0',
         });
 
         const close = () => {

@@ -1,11 +1,9 @@
 import { defineComponent,ref,onMounted } from 'vue';
 import { consult } from '@/service';
 import { message  } from 'ant-design-vue';
-import { BookFilled, UploadOutlined } from '@ant-design/icons-vue';
 import { result,formatTimestamp } from '@/helpers/utils';
 import AddOne from './AddOne/index.vue';
 import Update from './Update/index.vue';
-import { Item } from 'ant-design-vue/lib/menu';
 
 export default defineComponent({
     components:{
@@ -23,14 +21,25 @@ export default defineComponent({
                 dataIndex: 'ConsultationContent'
             },
             {
+                title: '附加图片',
+                dataIndex: 'ConsultImg'
+            },
+            {
                 title: '是否公开',
                 dataIndex: 'WhetherPublic'
             },
             {
+                title: '回复内容',
+                dataIndex: 'Reply'
+            },
+            {
+                title: '回复者',
+                dataIndex: 'Responder'
+            },
+            {
                 title: '创建时间',
-                dataIndex: 'creationTime',
                 slots:{
-                    customRender:'creationTime'
+                    customRender:'createdAt'
                 }
             },
             {
@@ -39,10 +48,7 @@ export default defineComponent({
                     customRender:'actions'
                 }
             },
-            
         ];
-
-
         const show = ref(false);
         const showUpdateModal = ref(false);
         const list = ref([]);
@@ -51,7 +57,7 @@ export default defineComponent({
         const keyword = ref('');
         const isSearch = ref(false);
         const curEditConsult = ref({});
-
+        
         // 获取书籍列表
         const getList = async () => {
             const res = await consult.list({
@@ -59,7 +65,6 @@ export default defineComponent({
                 size:10,
                 keyword:keyword.value,
             });
-            
            result(res)
             .success(({ data }) => {
                 const { list:l,total:t } = data;
@@ -67,7 +72,7 @@ export default defineComponent({
                 total.value = t;
             });
         }
-
+        // 挂载
         onMounted(async () => {
             getList();
         });
@@ -81,32 +86,23 @@ export default defineComponent({
         // 触发搜索
         const onSearch = () => {
             getList();
-
             isSearch.value = Boolean(keyword.value);
         };
 
-        // 回到全部列表
+        // 点击返回，回到全部列表
         const backAll = () => {
             keyword.value = '';
             isSearch.value = false;
             getList();
         };
 
-
-        // 删除一个医生的信息
+        // 删除一条咨询的信息
         const remove = async ({ text:record }) => {
            const { _id } = record; 
-             
            const res = await consult.remove(_id);
-
            result(res)
             .success(({ msg }) => {
                 message.success(msg);
-
-                // const idx = list.value.findIndex((item)=>{
-                //     return item._id === _id;
-                // });
-                // list.value.splice(idx,1);
                 getList();
             });
         };
@@ -135,6 +131,10 @@ export default defineComponent({
                         });
                 }
             };
+
+            const refresh = () => {
+                getList();
+            }
         return {
             columns,
             show,
@@ -153,6 +153,7 @@ export default defineComponent({
             curEditConsult,
             updateCurConsult,
             onUploadChange,
+            refresh,
             getList
         };
     },

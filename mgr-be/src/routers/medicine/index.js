@@ -32,6 +32,7 @@ router.post('/add',async (ctx) => {
         drugName,
         pharmacy,
         count,
+        medicineImg,
         manufacturer,
         specification,
         element,
@@ -44,6 +45,7 @@ router.post('/add',async (ctx) => {
         drugName,
         pharmacy,
         count,
+        medicineImg,
         manufacturer,
         specification,
         element,
@@ -129,10 +131,10 @@ router.post('/update',async (ctx) => {
         _id:id, 
     }).exec();
 
-    // 没有找到医生的信息
+    // 没有找到药品的信息
     if(!one){
         ctx.body = {
-            msg:'没有找到医生的信息',
+            msg:'没有找到药品的信息',
             code:0,
         }
         return;

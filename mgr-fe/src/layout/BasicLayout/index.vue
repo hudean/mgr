@@ -27,7 +27,10 @@
           <!-- end -->
         </div>
         <div class="hello-msg">您好，yanzhuxi</div>
-        <div class="logout">退出</div>
+        <!-- <div class="logout" @click="logout">退出</div> -->
+        <div>
+          <a href="http://localhost:8080/#/auth" class="logout">退出</a>
+        </div>
       </div>
     </div>
     <div class="app-header-placeholder"></div>

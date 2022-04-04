@@ -14,17 +14,13 @@ export default defineComponent({
         show:Boolean,
         article:Object,
     },
-    methods:{
-        // 接收wangEditor数据
-        sendEditor(val){
- 
-        }
-    },
+    
     setup(props,context) {
         const editForm = reactive({
             ArticleTitle: '',
             ArticleClassification: '',
             Distributor: '',
+            ArticleImg:'',
             DistributionContent: '',
             creationTime: '0',
         });
@@ -61,5 +57,12 @@ export default defineComponent({
             close,
             store:store.state,
         }
-    }
+    },
+    methods:{
+        // 接收wangEditor数据
+        sendEditor(val){
+            this.editForm.DistributionContent = val;
+            console.log(val);
+        }
+    },
 });

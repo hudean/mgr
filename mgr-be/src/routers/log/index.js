@@ -10,10 +10,10 @@ const router = new Router({
     prefix: '/log',
 });
 
-router.get('/list',async(ctx) => {
+router.get('/list',async (ctx) => {
     let {
         page,
-        size,
+        size = 10,
     } = ctx.query;
 
     page = Number(page);

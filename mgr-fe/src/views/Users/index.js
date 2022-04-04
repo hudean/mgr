@@ -118,6 +118,10 @@ export default defineComponent({
                 })
         }
 
+        const refresh = () => {
+            getUser();
+        }
+
         return {
             list,
             total,
@@ -138,6 +142,7 @@ export default defineComponent({
             editForm,
             onEdit,
             updateCharacter,
+            refresh,
             characterInfo:store.state.characterInfo,
         }
     }

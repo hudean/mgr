@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const domain = 'http://localhost:3000';
 
-// axios.defaults.headers['Authorization'] = `Bearer ${getToken()}`;
+const getURL = (path) => {
+    return `${domain}${path}`;
+}
 
 const getHeaders = () => {
     return{
@@ -11,19 +13,19 @@ const getHeaders = () => {
 };
 
 export const post = (url,data = {}) => {
-    return axios.post(url,data,{
+    return axios.post(getURL(url),data,{
         headers:getHeaders(),
     });
 };
 
 export const del = (url) => {
-    return axios.delete(url,{
+    return axios.delete(getURL(url),{
         headers:getHeaders(),
     });
 };
 
 export const get  = (url,data = {}) => {
-    return axios.get(url,{
+    return axios.get(getURL(url),{
         params:data,
         headers:getHeaders(),
     })

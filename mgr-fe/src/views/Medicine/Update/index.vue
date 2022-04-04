@@ -31,9 +31,9 @@
         <a-form-item label="主治功能">
           <a-input v-model:value="editForm.indications" />
         </a-form-item>
-        <a-form-item label="添加时间">
+        <!-- <a-form-item label="添加时间">
           <a-date-picker v-model:value="editForm.creationTime" />
-        </a-form-item>
+        </a-form-item> -->
       </a-form>
     </a-modal>
   </div>

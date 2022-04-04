@@ -12,7 +12,6 @@ const defaultFormData = {
     specification: '',
     element: '', 
     indications:'', 
-    creationTime: '0',
 };
 
 export default defineComponent({

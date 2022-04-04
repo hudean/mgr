@@ -12,19 +12,18 @@
           v-model:value="keyword"
           @search="onSearch"
           />
-          <a v-if="isSearch" href="javascript:;" @click="backAll">返回</a>
+          <a-button v-if="isSearch" href="javascript:;" @click="backAll">返回</a-button>
+          <a-button href="javascript:;" @click="refresh">刷新</a-button>
         </div>
-        <div class="upload">
-          <a-button @click="show = true">添加医生</a-button>
+        <!-- <div class="upload">
           &nbsp;
-          <!-- 上传图片 -->
           <a-upload 
             @change="onUploadChange"
             action="http://localhost:3000/upload/file"
           >
             <a-button type="primary">上传 Excel 添加</a-button>
           </a-upload>
-        </div>
+        </div> -->
         </div>
 
       <a-divider></a-divider>
@@ -34,8 +33,8 @@
       :data-source="list"
       :pagination="false"
       >
-        <template #creationTime="data">
-          {{ formatTimestamp(data.record.creationTime) }}          
+        <template #createdAt="{record }">
+            {{formatTimestamp(record.meta.createdAt)}}
         </template>
         <template #actions="record">
           <a href="javascript:;" @click="update(record)">编辑</a>
