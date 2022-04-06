@@ -39,7 +39,10 @@ export default defineComponent({
       },
       {
         title: '文章图片',
-        dataIndex: 'ArticleImg',
+        // dataIndex: 'ArticleImg',
+        slots: {
+          customRender: 'ArticleImg',
+        },
       },
       {
         title: '发布时间',
@@ -94,7 +97,6 @@ export default defineComponent({
         size: 10,
         keyword: keyword.value,
       });
-
       result(res)
         .success(({ data }) => {
           const { list: l, total: t } = data;
@@ -116,7 +118,6 @@ export default defineComponent({
     // 触发搜索
     const onSearch = () => {
       getList();
-
       isSearch.value = Boolean(keyword.value);
     };
 
@@ -130,13 +131,10 @@ export default defineComponent({
     // 删除一条文章的信息
     const remove = async ({ text: record }) => {
       const { _id } = record;
-
       const res = await article.remove(_id);
-
       result(res)
         .success(({ msg }) => {
           message.success(msg);
-
           // const idx = list.value.findIndex((item)=>{
           //     return item._id === _id;
           // });

@@ -9,13 +9,20 @@
       <a-form :model="formState" :label-col="{span:6}" :wrapper-col="{span:12}">
         <a-form-item label="头像">
           <!-- <a-input v-model:value="addForm.doctorImg" /> -->
-          <a-upload action="http://localhost:3000/upload/file" v-model:value="addForm.doctorImg">
+          <a-upload 
+              action="http://localhost:3000/upload/file" 
+              v-model:value="addForm.doctorImg"
+              @change="handleChange"
+          >
           <a-button>
             <upload-outlined></upload-outlined>
             上传图片
           </a-button>
         </a-upload>
         </a-form-item>
+        <!-- <a-form-item label="头像">
+          <a-input v-model:value="addForm.doctorImg" />
+        </a-form-item> -->
         <a-form-item label="姓名">
           <a-input v-model:value="addForm.name" />
         </a-form-item>
@@ -45,4 +52,13 @@
   </div>
 </template>
 
-<script src="./index.js"></script>
+<script src="./index.js">
+  export default {
+    data() {
+      
+    },
+    methods: {
+     
+  },
+  }
+</script>

@@ -2,7 +2,7 @@
   <div >
 
     <a-modal 
-    title="添加文章" 
+    title="编辑文章" 
     :visible="props.show" 
     @ok="submit"
     @cancel="close"
@@ -31,8 +31,17 @@
         <a-form-item label="发布人">
           <a-input v-model:value="editForm.Distributor" />
         </a-form-item>
-         <a-form-item label="文章图片">
-          <a-input v-model:value="editForm.ArticleImg" />
+        <a-form-item label="文章图片">
+          <a-upload 
+              action="http://localhost:3000/upload/file" 
+              v-model:value="editForm.ArticleImg"
+              @change="handleChange"
+          >
+          <a-button>
+            <upload-outlined></upload-outlined>
+            上传图片
+          </a-button>
+        </a-upload>
         </a-form-item>
         <a-form-item label="发布时间">
           <a-date-picker v-model:value="editForm.creationTime" />

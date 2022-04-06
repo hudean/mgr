@@ -28,10 +28,10 @@ a{
     padding: 6px 7px;
     color: white;
 }
-a:nth-child(1){
+.edit{
     background-color: #009688;
 }
-a:nth-child(2){
+.delete{
     background-color: #ff5722;
 }
 ::v-deep .ant-table-thead > tr > th {
@@ -47,13 +47,13 @@ a:nth-child(2){
 ::v-deep td{
     font-size: 15px;
 }
-::v-deep  .ant-table-tbody > tr > td{
-    // padding: 16px 7px !important;
-    max-width: 110px;
-    border-bottom: 0;
-    text-align: center !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-bottom: 0.1px solid #eeeded !important;
-}
+// ::v-deep  .ant-table-tbody > tr > td{
+//     // padding: 16px 7px !important;
+//     max-width: 110px;
+//     border-bottom: 0;
+//     text-align: center !important;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     border-bottom: 0.1px solid #eeeded !important;
+// }

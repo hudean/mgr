@@ -26,15 +26,19 @@ a{
     padding: 6px 7px;
     color: white;
 }
-a:nth-child(1){
+.refresh{
     background-color: #009688;
 }
-a:nth-child(2){
+.backAll{
+    background-color:skyblue;
+}
+.edit{
+    background-color: #009688;
+}
+.delete{
     background-color: #ff5722;
 }
-a:nth-child(3){
-        background-color: #86d2f8;
-}
+
 ::v-deep .ant-table-thead > tr > th {
     font-weight: bolder !important;
     background-color:#f2f2f2  !important;   //如果不生效 记得加后面的这个important

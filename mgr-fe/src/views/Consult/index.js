@@ -22,7 +22,9 @@ export default defineComponent({
             },
             {
                 title: '附加图片',
-                dataIndex: 'ConsultImg'
+                slots:{
+                    customRender:'ConsultImg'
+                }
             },
             {
                 title: '是否公开',

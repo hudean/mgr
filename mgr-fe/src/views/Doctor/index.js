@@ -16,11 +16,19 @@ export default defineComponent({
     props:{
         simple:Boolean,
     },
+    data(){
+        return{
+            imgUrl:'',
+        }
+    },
     setup(props) {
         const columns = [
             {
                 title: '头像',
-                dataIndex: 'doctorImg'
+                // dataIndex: 'doctorImg'
+                slots:{
+                    customRender:'doctorImg'
+                }
             },
             {
                 title: '姓名',
@@ -52,7 +60,6 @@ export default defineComponent({
             },
             {
                 title: '创建时间',
-                dataIndex: 'creationTime',
                 slots:{
                     customRender:'creationTime'
                 }
@@ -76,6 +83,7 @@ export default defineComponent({
         const keyword = ref('');
         const isSearch = ref(false);
         const curEditDoctor = ref({});
+        const showImg = ref('');
 
     // 获取文章列表
     const getList = async () => {
@@ -93,12 +101,9 @@ export default defineComponent({
           });
       };
 
-        //------
         onMounted(async () => {
             getList();
         });
-
-
 
         // 设置页码
         const setPage = (page) => {
@@ -157,7 +162,7 @@ export default defineComponent({
                             result(res)
                                 .success(({data:{ addCount } }) =>{
                                     message.success(`成功添加 ${addCount} 名医生`);
-
+                                    console.log(data);
                                     getList();
                                 })
                         });
@@ -166,6 +171,10 @@ export default defineComponent({
             // 刷新
             const refresh = () => {
                 getList();
+            }
+            const sendImg = async (data) => {
+                console.log(data)
+                let showImg=data
             }
         return {
             columns,
@@ -187,7 +196,15 @@ export default defineComponent({
             onUploadChange,
             getList,
             refresh,
+            sendImg,
+            showImg,
             simple:props.simple
         };
     },
+    // methods:{
+    //     sendImg(val){
+    //         this.imgUrl = val;
+    //         console.log(this.imgUrl)
+    //     }
+    // }
 });

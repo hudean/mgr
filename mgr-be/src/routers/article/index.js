@@ -26,7 +26,7 @@ router.post('/add',async (ctx) => {
         ArticleTitle,
         ArticleClassification,
         Distributor,
-        ArticleImg,
+        ArticleImg:`http://localhost:3000/` +ArticleImg ,
         DistributionContent,
         creationTime,
     });
@@ -105,6 +105,18 @@ router.post('/update',async (ctx) => {
         ...others
     } = ctx.request.body;
 
+    
+
+        // const {
+        //     id,
+        //     ArticleTitle,
+        //     ArticleClassification,
+        //     Distributor,
+        //     ArticleImg,
+        //     DistributionContent,
+        //     creationTime,
+        // } = ctx.request.body;
+
     const one = await Article.findOne({
         _id:id, 
     }).exec();
@@ -112,7 +124,7 @@ router.post('/update',async (ctx) => {
     // 没有找到医生的信息
     if(!one){
         ctx.body = {
-            msg:'没有找到医生的信息',
+            msg:'没有找到相关的信息',
             code:0,
         }
         return;

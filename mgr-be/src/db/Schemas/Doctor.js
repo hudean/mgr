@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { getMeta,preSave } = require('../helpers');
 
 const DoctorSchema = new mongoose.Schema({
-    // doctorImg:String,
+    doctorImg:String,
     name:String,
     hospital:String,
     position:String,

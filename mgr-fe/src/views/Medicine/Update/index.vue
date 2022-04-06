@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-modal 
-    title="添加药品" 
+    title="修改信息" 
     :visible="props.show" 
     @ok="submit"
     @cancel="close"
@@ -18,6 +18,18 @@
         </a-form-item>
         <a-form-item label="库存">
           <a-input v-model:value="editForm.count" />
+        </a-form-item>
+        <a-form-item label="药物图片">
+          <a-upload 
+              action="http://localhost:3000/upload/file" 
+              v-model:value="editForm.medicineImg"
+              @change="handleChange"
+          >
+          <a-button>
+            <upload-outlined></upload-outlined>
+            上传图片
+          </a-button>
+        </a-upload>
         </a-form-item>
         <a-form-item label="生产企业">
           <a-input v-model:value="editForm.manufacturer" />

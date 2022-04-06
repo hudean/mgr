@@ -42,7 +42,9 @@ export default defineComponent({
             },
             {
                 title: '药品图片',
-                dataIndex: 'medicineImg'
+                slots:{
+                    customRender:'medicineImg'
+                }
             },
             {
                 title: '生产企业',

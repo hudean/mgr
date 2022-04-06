@@ -6,6 +6,7 @@ const MedicineSchema = new mongoose.Schema({
     price:String,
     pharmacy:String,
     count:Number,
+    // medicineImg:String,
     medicineImg:String,
     manufacturer:String,
     specification:String,

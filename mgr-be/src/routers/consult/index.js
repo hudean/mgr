@@ -24,7 +24,7 @@ router.post('/add',async (ctx) => {
     const consult = new Consult({
         Consultants,
         ConsultationContent,
-        ConsultImg,
+        ConsultImg:`http://localhost:3000/` + ConsultImg,
         WhetherPublic,
         creationTime,
     });

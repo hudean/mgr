@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-modal 
-    title="添加咨询" 
+    title="回复咨询" 
     :visible="props.show" 
     @ok="submit"
     @cancel="close"
@@ -9,17 +9,17 @@
     >
       <a-form :model="formState" :label-col="{span:6}" :wrapper-col="{span:12}">
         <a-form-item label="咨询者">
-          <a-input v-model:value="editForm.Consultants" disabled />
+          <a-input v-model:value="editForm.Consultants"  />
         </a-form-item>
         <a-form-item label="咨询内容">
           <!-- <a-input v-model:value="editForm.ConsultationContent" /> -->
-           <a-textarea v-model:value="editForm.ConsultationContent"  :rows="4" disabled />
+           <a-textarea v-model:value="editForm.ConsultationContent"  :rows="4"  />
         </a-form-item>
         <a-form-item label="附加图片">
           <a-input v-model:value="editForm.ConsultImg" />
         </a-form-item>
         <a-form-item label="是否公开">
-          <a-input v-model:value="editForm.WhetherPublic" disabled />
+          <a-input v-model:value="editForm.WhetherPublic"  />
         </a-form-item>
         <a-form-item label="回复内容">
           <!-- <a-input v-model:value="editForm.Reply" /> -->
@@ -29,7 +29,7 @@
           <a-input v-model:value="editForm.Responder" required="required"  />
         </a-form-item>
         <a-form-item label="添加时间">
-          <a-date-picker v-model:value="editForm.creationTime" disabled />
+          <a-date-picker v-model:value="editForm.creationTime"  />
         </a-form-item>
       </a-form>
     </a-modal>

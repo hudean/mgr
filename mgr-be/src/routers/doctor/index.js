@@ -14,6 +14,7 @@ const router = new Router({
 
 router.post('/add',async (ctx) => {
     const {
+        doctorImg,
         name,
         hospital,
         position,
@@ -25,6 +26,7 @@ router.post('/add',async (ctx) => {
     } = getBody(ctx);
 
     const doctor = new Doctor({
+        doctorImg,
         name,
         hospital,
         position,
@@ -160,6 +162,7 @@ router.post('/addMany',async(ctx)=> {
         let record = sheet[i];
 
         const [
+            doctorImg,
             name,
             hospital,
             position,
@@ -171,6 +174,7 @@ router.post('/addMany',async(ctx)=> {
         ] = record;
 
         arr.push({
+            doctorImg,
             name,
             hospital,
             position,

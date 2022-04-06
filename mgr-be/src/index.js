@@ -9,6 +9,11 @@ const cors = require('@koa/cors');
 
 const app = new Koa();
 
+// var koaStaticCache=require('koa-static-cache');
+// app.use(koaStaticCache(__dirname+'/static')) 
+const staticResource = require('koa-static');
+const path = require('path')
+
 connect().then(() => {
     app.use(cors());
 
@@ -21,6 +26,9 @@ connect().then(() => {
     app.use(catchTokenError);
     
     
+    //配置静态资源中间件
+app.use(staticResource(path.join(__dirname,'public')))
+
     // koaJwtMiddleware(app);
     
     // app.use(logMiddleware);
@@ -31,5 +39,8 @@ connect().then(() => {
         console.log('启动成功');
     });
 });
+
+
+
 
 
