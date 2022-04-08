@@ -20,22 +20,43 @@ router.post('/add',async (ctx) => {
         WhetherPublic,
         creationTime,
     } = getBody(ctx);
+    console.log(ConsultImg)
+    console.log('打印出图片的数据',ConsultImg._value);
 
-    const consult = new Consult({
-        Consultants,
-        ConsultationContent,
-        ConsultImg:`http://localhost:3000/` + ConsultImg,
-        WhetherPublic,
-        creationTime,
-    });
 
-    const res = await consult.save();
-
-    ctx.body = {
-        data:res,
-        code:1,
-        msg:'添加成功'
+    if(ConsultImg._value ===''){
+        let {ConsultImg} = getBody(ctx);
+        ConsultImg='50cffe94-36b6-48a3-8a19-e3bef79e6d99.png'
+        const consult = new Consult({
+            Consultants,
+            ConsultationContent,
+            ConsultImg:`http://localhost:3000/` + ConsultImg,
+            WhetherPublic,
+            creationTime,
+        });
+        const res = await consult.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
+    }else{
+        const consult = new Consult({
+            Consultants,
+            ConsultationContent,
+            ConsultImg:`http://localhost:3000/` + ConsultImg,
+            WhetherPublic,
+            creationTime,
+        });
+        const res = await consult.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
     }
+
+    
 });
 
 router.get('/list',async (ctx)=>{

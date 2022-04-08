@@ -18,10 +18,7 @@
           <a-input v-model:value="addForm.Distributor" />
         </a-form-item>
         <a-form-item label="发布内容">
-          <WangEditor 
-          v-model:value="addForm.DistributionContent"
-           @sendEditor1="sendEditor1"
-           ></WangEditor>
+          <WangEditor v-model:value="addForm.DistributionContent" @sendEditor1="sendEditor1"></WangEditor>
         </a-form-item>
 
         <a-form-item label="文章图片">
@@ -37,7 +34,14 @@
         </a-form-item>
 
         <a-form-item label="发布时间">
-          <a-date-picker v-model:value="addForm.creationTime" />
+          <!-- <a-date-picker v-model:value="addForm.creationTime" /> -->
+
+          <a-date-picker @change="onChange" v-model:value="addForm.creationTime">
+            <template #suffixIcon>
+              <SmileOutlined />
+            </template>
+          </a-date-picker>
+
         </a-form-item>
       </a-form>
     </a-modal>

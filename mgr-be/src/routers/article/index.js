@@ -22,22 +22,39 @@ router.post('/add',async (ctx) => {
         creationTime,
     } = getBody(ctx);
 
-    const article = new Article({
-        ArticleTitle,
-        ArticleClassification,
-        Distributor,
-        ArticleImg:`http://localhost:3000/` +ArticleImg ,
-        DistributionContent,
-        creationTime,
-    });
-
-    const res = await article.save();
-
-    ctx.body = {
-        data:res,
-        code:1,
-        msg:'添加成功'
+    if(ArticleImg._value===''){
+        const article = new Article({
+            ArticleTitle,
+            ArticleClassification,
+            Distributor,
+            ArticleImg:`http://localhost:3000/f930ffb0-99d5-4542-998e-71a1f9da0209.jpg` ,
+            DistributionContent,
+            creationTime,
+        });
+        const res = await article.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
+    }else{
+        const article = new Article({
+            ArticleTitle,
+            ArticleClassification,
+            Distributor,
+            ArticleImg:`http://localhost:3000/` +ArticleImg ,
+            DistributionContent,
+            creationTime,
+        });
+        const res = await article.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
     }
+
+    
 });
 
 router.get('/list',async (ctx)=>{

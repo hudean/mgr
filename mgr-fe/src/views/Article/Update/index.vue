@@ -45,6 +45,7 @@
         </a-form-item>
         <a-form-item label="发布时间">
           <a-date-picker v-model:value="editForm.creationTime" />
+          <!-- <template #createdAt="{record }">{{formatTimestamp(record.meta.createdAt)}}</template> -->
         </a-form-item>
         
         <a-form-item label="发布内容" >

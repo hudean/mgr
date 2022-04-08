@@ -67,7 +67,6 @@
       @getListEdit="getList"
     ></update>
     <div>{{ $t('msg.test') }}</div>
-    <!-- <img src="../../../../mgr-be/upload/0de90267-313f-406e-94cd-d6d3d2c24d41.jpg" alt=""> -->
   </div>
 </template>
 

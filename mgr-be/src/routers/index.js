@@ -14,6 +14,7 @@ const forgetPassword = require('./forget-password');
 const articleClassify = require('./article-classify');
 const profile = require('./profile');
 const dashboard = require('./dashboard');
+const attention = require('./attention');
 
 
 
@@ -34,4 +35,5 @@ module.exports = (app) =>{
     app.use(articleClassify.routes());
     app.use(profile.routes());
     app.use(dashboard.routes());
+    app.use(attention.routes());
 };

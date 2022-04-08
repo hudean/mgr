@@ -11,6 +11,7 @@ require('./Schemas/Log');
 require('./Schemas/LogResponse');
 require('./Schemas/ForgetPassword');
 require('./Schemas/ArticleClassify');
+require('./Schemas/Attention');
 
 
 const mongoose = require('mongoose');

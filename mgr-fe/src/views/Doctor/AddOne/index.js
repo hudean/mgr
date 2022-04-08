@@ -35,7 +35,6 @@ export default defineComponent({
                 message.success(`${info.file.name} 图片上传成功.`);
                 const dataImg = info.file.response.data
                 realImgUrl = `http://localhost:3000/` + dataImg;
-                console.log(realImgUrl);
                 context.emit('sendImg', realImgUrl);
             } else if (status === 'error') {
                 message.error(`${info.file.name} file upload failed.`);
@@ -45,8 +44,17 @@ export default defineComponent({
         const submit = async () => {
             const form = clone(addForm);
             form.creationTime = addForm.creationTime.valueOf();
-            defaultFormData.doctorImg = realImgUrl
-            form.doctorImg = defaultFormData.doctorImg
+            if(realImgUrl._value===''){
+                console.log('没有图片',realImgUrl)
+                // defaultFormData.doctorImg = realImgUrl
+                form.doctorImg = String('http://localhost:3000/7d187ee7-5a44-4729-8809-bb32a424468e.png')
+            }else{
+                console.log('有图片',realImgUrl._value)
+                defaultFormData.doctorImg = realImgUrl
+                form.doctorImg = String(defaultFormData.doctorImg)
+            }
+            // defaultFormData.doctorImg = realImgUrl
+            // form.doctorImg = String(defaultFormData.doctorImg)
             const res = await doctor.add(form);
             result(res)
                 .success((d, { data }) => {

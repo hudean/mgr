@@ -15,3 +15,4 @@ export * as inviteCode from './invite-code';
 export * as articleClassify from './article-classify';
 export * as profile from './profile';
 export * as dashboard from './dashboard';
+export * as attention from './attention';

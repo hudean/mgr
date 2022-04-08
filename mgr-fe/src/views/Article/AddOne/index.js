@@ -1,6 +1,8 @@
 import { defineComponent, reactive, ref } from 'vue';
+import { SmileOutlined } from '@ant-design/icons-vue';
 import { article } from '@/service';
 import { message } from 'ant-design-vue';
+import {Moment } from 'moment';
 import store from '@/store';
 import { result, clone } from '@/helpers/utils';
 import WangEditor from './WangEditor.vue';
@@ -11,7 +13,7 @@ const defaultFormData = {
     Distributor: '',
     ArticleImg: '',
     DistributionContent: '',
-    creationTime: '0',
+    creationTime: '1',
 };
 
 export default defineComponent({
@@ -20,6 +22,7 @@ export default defineComponent({
     },
     components: {
         WangEditor,
+        SmileOutlined,
     },
     setup(props, context) {
         const addForm = reactive(clone(defaultFormData));
@@ -65,7 +68,10 @@ export default defineComponent({
                 });
         };
 
-        console.log(store.state);
+        // console.log(store.state);
+        const onChange = (date, dateString) => {
+            console.log(date, dateString);
+          }
 
         return {
             addForm,
@@ -74,6 +80,7 @@ export default defineComponent({
             close,
             store: store.state,
             handleChange,
+            onChange,
         }
     },
     methods: {

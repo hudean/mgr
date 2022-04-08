@@ -40,26 +40,50 @@ router.post('/add',async (ctx) => {
         creationTime,
     } = getBody(ctx);
 
-    const medicine = new Medicine({
-        price,
-        drugName,
-        pharmacy,
-        count,
-        medicineImg:`http://localhost:3000/`+medicineImg,
-        manufacturer,
-        specification,
-        element,
-        indications,
-        creationTime,
-    });
-
-    const res = await medicine.save();
-
-    ctx.body = {
-        data:res,
-        code:1,
-        msg:'添加成功'
+    if(medicineImg._value===''){
+        let {medicineImg} = getBody(ctx);
+        medicineImg='9d7fda28-a461-457b-9d36-e9722015c21a.jpg'
+        const medicine = new Medicine({
+            price,
+            drugName,
+            pharmacy,
+            count,
+            medicineImg:`http://localhost:3000/`+medicineImg,
+            manufacturer,
+            specification,
+            element,
+            indications,
+            creationTime,
+        });
+        const res = await medicine.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
+    }else{
+        const medicine = new Medicine({
+            price,
+            drugName,
+            pharmacy,
+            count,
+            medicineImg:`http://localhost:3000/`+medicineImg,
+            manufacturer,
+            specification,
+            element,
+            indications,
+            creationTime,
+        });
+        const res = await medicine.save();
+        ctx.body = {
+            data:res,
+            code:1,
+            msg:'添加成功'
+        }
     }
+
+
+   
 });
 
 router.get('/list',async (ctx)=>{

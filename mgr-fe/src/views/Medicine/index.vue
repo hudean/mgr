@@ -29,7 +29,7 @@
       <a-table :columns="columns" :data-source="list" :pagination="false" bordered ellipsis="true">
         <template #medicineImg="{ record }">
           <a :href="record.medicineImg" target="_blank">
-            <img :src="record.medicineImg" alt style="width:80px;height:80px;object-fit: cover;
+            <img :src="record.medicineImg" alt style="width:90px;height:80px;object-fit: cover;
 " />
           </a>
         </template>
