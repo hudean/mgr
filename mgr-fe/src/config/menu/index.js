@@ -66,4 +66,9 @@ export default [
     url: '/profile',
     onlyAdmin:false,
   },
+  {
+    title: '疫情动态',
+    url: '/vueecharts',
+    onlyAdmin:false,
+  },
 ];
