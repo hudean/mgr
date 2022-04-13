@@ -2,8 +2,8 @@
   <div>
     <a-card :title="simple ? '最近添加的医生':''">
       <div v-if="!simple">
-        <h2 style="color:#3c8dbc;">医生列表</h2>
-
+        <!-- <h2 style="color:#3c8dbc;">医生列表</h2> -->
+        <h2 style="color:#3c8dbc;">{{$t('doctorPage.doctorManage')}}</h2>
         <a-divider></a-divider>
         <div class="operation">
           <div class="search">

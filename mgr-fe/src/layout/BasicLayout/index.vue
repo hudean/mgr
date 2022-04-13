@@ -8,17 +8,17 @@
       <div class="right">
         <div class="switchLanguage">
           <!-- start -->
-          <a-dropdown>
+          <a-dropdown @click="clickLang"> 
             <a class="ant-dropdown-link" @click.prevent>
               多语言
               <DownOutlined />
             </a>
             <template #overlay>
-              <a-menu>
-                <a-menu-item>
+              <a-menu @click="aa">
+                <a-menu-item  key="a">
                   <a href="javascript:;">中文</a>
                 </a-menu-item>
-                <a-menu-item>
+                <a-menu-item  key="b">
                   <a href="javascript:;">English</a>
                 </a-menu-item>
               </a-menu>

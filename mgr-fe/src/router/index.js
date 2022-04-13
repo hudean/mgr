@@ -83,6 +83,12 @@ const routes = [
         name: 'VueEcharts',
         component: () => import(/* webpackChunkName: "VueEcharts" */ '../views/VueEcharts/index.vue'),
       },
+      {
+        path: 'citys/:cityname',
+        name: 'Citys',
+        props:true,
+        component: () => import(/* webpackChunkName: "Citys" */ '../views/Citys/index.vue'),
+      },
     ]
   },
 

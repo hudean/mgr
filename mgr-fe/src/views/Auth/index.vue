@@ -3,7 +3,7 @@
     <div class="bg"></div>
     <div class="title-info">
       <img src alt />
-      <div class="title">小程序后台管理系统</div>
+      <h2 class="title">小程序后台管理系统</h2>
     </div>
 
     <div class="form">

@@ -5,14 +5,19 @@
     left: 0;
     bottom: 0;
     // background-image: url("../../image/indexBg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center center;
+    // background-color:black ;
 }
 .auth{
     .title-info{
         text-align: center;
         margin-top: 100px;
+    }
+    .title{
+        // color: white;
+        z-index: 900;
     }
 
     .form{

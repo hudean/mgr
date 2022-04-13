@@ -17,6 +17,7 @@
     "echarts": "^4.9.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.2",
+    "vant": "^3.4.7",
     "vue": "^3.0.0",
     "vue-i18n": "^9.2.0-beta.33",
     "vue-router": "^4.0.0-0",
@@ -38,6 +39,7 @@
     "lint-staged": "^9.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "swiper": "^5.4.5",
     "vue-loader": "^17.0.0",
     "vue-template-compiler": "^2.6.14"
   },

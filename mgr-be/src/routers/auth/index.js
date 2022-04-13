@@ -97,7 +97,7 @@ router.post('/login', async (ctx) => {
     if (!one) {
         ctx.body = {
             code: 0,
-            msg: '用户名或密码错误',
+            msg: '用户名或密码错误1',
             data: null
         };
         return;
@@ -121,7 +121,7 @@ router.post('/login', async (ctx) => {
     }
     ctx.body = {
         code: 0,
-        msg: '用户名或密码错误',
+        msg: '用户名或密码错误2',
         data: null
     };
 });

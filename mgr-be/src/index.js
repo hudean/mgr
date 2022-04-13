@@ -31,7 +31,7 @@ app.use(staticResource(path.join(__dirname,'public')))
 
     // koaJwtMiddleware(app);
     
-    // app.use(logMiddleware);
+    app.use(logMiddleware);
 
     registerRoutes(app);
 

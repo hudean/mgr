@@ -6,10 +6,11 @@ import Antd from 'ant-design-vue';
 import SpaceBetween from './components/SpaceBetween/index.vue';
 import FlexEnd from './components/FlexEnd/index.vue';
 import { regDirectives } from '@/helpers/directive';
-import i18n from '@/i18n';
-
-
+// import i18n from '@/i18n';
+import 'swiper/css/swiper.css';
 import 'ant-design-vue/dist/antd.css';
+// 导入语言
+import i18n from './lang/index'
 
 
 const app = createApp(App)
